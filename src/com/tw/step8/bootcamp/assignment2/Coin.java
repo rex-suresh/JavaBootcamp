@@ -6,4 +6,8 @@ public class Coin {
   public static double getTailChance() {
     return tailChance;
   }
+
+  public static double getNotATailChance() {
+    return 1 - tailChance;
+  }
 }

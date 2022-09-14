@@ -10,4 +10,9 @@ class CoinTest {
   void getTailChance() {
     assertEquals(0.5, Coin.getTailChance());
   }
+
+  @Test
+  void getNotATailChance() {
+    assertEquals(0.5, Coin.getNotATailChance());
+  }
 }
