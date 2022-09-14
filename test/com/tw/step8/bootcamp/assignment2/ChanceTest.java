@@ -19,7 +19,7 @@ class ChanceTest {
     Chance anotherChance = new Chance(0.5);
     Chance expectedChance = new Chance(0.25);
 
-    assertEquals(expectedChance, chance.andOf(anotherChance));
+    assertEquals(expectedChance, chance.intersectionOf(anotherChance));
   }
 
   @Test
@@ -28,6 +28,6 @@ class ChanceTest {
     Chance anotherChance = new Chance(0.5);
     Chance expectedChance = new Chance(0.75);
 
-    assertEquals(expectedChance, chance.OrOf(anotherChance));
+    assertEquals(expectedChance, chance.unionOf(anotherChance));
   }
 }

@@ -13,12 +13,12 @@ public class Chance {
     return new Chance(1 - probability);
   }
 
-  public Chance andOf(Chance chance) {
+  public Chance intersectionOf(Chance chance) {
     double combinedProbability = chance.probability * probability;
     return new Chance(combinedProbability);
   }
 
-  public Chance OrOf(Chance chance) {
+  public Chance unionOf(Chance chance) {
     double combinedProbability = probability + chance.probability - (chance.probability * probability);
     return new Chance(combinedProbability);
   }
