@@ -16,4 +16,10 @@ class RectangleTest {
     Rectangle rectangle = new Rectangle(10, 8);
     assertEquals(36, rectangle.perimeter());
   }
+
+  @Test
+  void areaOfDoubles() {
+    Rectangle rectangle = new Rectangle(2.4, 2.4);
+    assertEquals(5.76, rectangle.area(), 0.1);
+  }
 }
