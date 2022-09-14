@@ -7,12 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class CoinTest {
 
   @Test
-  void getTailChance() {
-    assertEquals(0.5, Coin.getTailChance());
+  void shouldGetTailChanceForOneCoin() {
+    assertEquals(0.5, Flip.getTailChance(1));
   }
 
   @Test
   void getNotATailChance() {
-    assertEquals(0.5, Coin.getNotATailChance());
+    assertEquals(0.5, Flip.getNotATailChance());
+  }
+
+  @Test
+  void shouldGetTailChanceForTwoCoins() {
+    assertEquals(0.75, Flip.getTailChance(2));
   }
 }
