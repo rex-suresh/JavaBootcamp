@@ -8,16 +8,21 @@ class CoinTest {
 
   @Test
   void shouldGetTailChanceForOneCoin() {
-    assertEquals(0.5, Flip.getTailChance(1));
+    assertEquals(0.5, ChanceOfFlip.atLeastOneTail(1));
   }
 
   @Test
   void getNotATailChance() {
-    assertEquals(0.5, Flip.getNotATailChance());
+    assertEquals(0.5, ChanceOfFlip.getNotATailChance());
   }
 
   @Test
-  void shouldGetTailChanceForTwoCoins() {
-    assertEquals(0.75, Flip.getTailChance(2));
+  void shouldGetAllTailsChanceForTwoCoins() {
+    assertEquals(0.25, ChanceOfFlip.atAllTails(2));
+  }
+
+  @Test
+  void shouldGetAtLeastOneTailChanceForTwoCoins() {
+    assertEquals(0.75, ChanceOfFlip.atLeastOneTail(2));
   }
 }
