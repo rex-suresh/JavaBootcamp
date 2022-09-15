@@ -2,38 +2,36 @@ package com.tw.step8.bootcamp.assignment3;
 
 import java.util.Objects;
 
-public class Feet implements Length {
-  private double value;
+public class Centimeter implements Length {
+  private final double value;
 
-  public Feet(double value) {
+  public Centimeter(double value) {
     this.value = value;
-  }
-
-  public Feet compare(Feet anotherLength) {
-    return new Feet(this.value - anotherLength.value);
   }
 
   @Override
   public Inch toInch() {
-    return null;
+    double conversionConstant = 2/5d;
+    return new Inch(value * conversionConstant);
   }
 
   @Override
   public Feet toFeet() {
-    return this;
+    double conversionConstant = 30.48;
+    return new Feet(value / conversionConstant);
   }
 
   @Override
   public Centimeter toCentimeter() {
-    return null;
+    return this;
   }
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Feet feet = (Feet) o;
-    return Double.compare(feet.value, value) == 0;
+    Centimeter that = (Centimeter) o;
+    return Double.compare(that.value, value) == 0;
   }
 
   @Override

@@ -2,15 +2,32 @@ package com.tw.step8.bootcamp.assignment3;
 
 import java.util.Objects;
 
-public class Inch {
-  private double value;
+public class Inch implements Length{
+  private final double value;
 
   public Inch(double value) {
     this.value = value;
   }
 
-  public Inch compare(Inch anotherLength) {
-    return new Inch(this.value - anotherLength.value);
+  public Inch compare(Length anotherLength) {
+    Inch anotherInch = anotherLength.toInch();
+    return new Inch(this.value - anotherInch.value);
+  }
+
+  @Override
+  public Inch toInch() {
+    return this;
+  }
+
+  @Override
+  public Feet toFeet() {
+    return null;
+  }
+
+  @Override
+  public Centimeter toCentimeter() {
+    double conversionConstant = 5/2.00;
+    return new Centimeter(value * conversionConstant);
   }
 
   @Override
