@@ -22,4 +22,9 @@ public class Millimeter implements Length{
     double conversionConstant = 1/10d;
     return new Centimeter(value * conversionConstant );
   }
+
+  @Override
+  public Millimeter toMillimeter() {
+    return null;
+  }
 }

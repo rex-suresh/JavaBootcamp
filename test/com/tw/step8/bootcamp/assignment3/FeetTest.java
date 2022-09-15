@@ -14,4 +14,13 @@ class FeetTest {
 
     assertEquals(expectedLength, feet.compare(anotherFeet));
   }
+
+  @Test
+  void shouldCompareFeetWithInches() {
+    Feet feet = new Feet(1);
+    Inch inch = new Inch(12);
+    Feet expectedLength = new Feet(0);
+
+    assertEquals(expectedLength, feet.compare(inch));
+  }
 }

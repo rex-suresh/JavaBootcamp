@@ -4,4 +4,5 @@ public interface Length {
   Inch toInch();
   Feet toFeet();
   Centimeter toCentimeter();
+  Millimeter toMillimeter();
 }

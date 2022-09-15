@@ -21,13 +21,18 @@ public class Inch implements Length{
 
   @Override
   public Feet toFeet() {
-    return null;
+    return new Feet(value/12);
   }
 
   @Override
   public Centimeter toCentimeter() {
     double conversionConstant = 5/2.00;
     return new Centimeter(value * conversionConstant);
+  }
+
+  @Override
+  public Millimeter toMillimeter() {
+    return null;
   }
 
   @Override

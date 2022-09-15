@@ -32,6 +32,11 @@ public class Centimeter implements Length {
   }
 
   @Override
+  public Millimeter toMillimeter() {
+    return null;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

@@ -3,14 +3,15 @@ package com.tw.step8.bootcamp.assignment3;
 import java.util.Objects;
 
 public class Feet implements Length {
-  private double value;
+  private final double value;
 
   public Feet(double value) {
     this.value = value;
   }
 
-  public Feet compare(Feet anotherLength) {
-    return new Feet(this.value - anotherLength.value);
+  public Feet compare(Length anotherLength) {
+    Feet anotherFeet = anotherLength.toFeet();
+    return new Feet(this.value - anotherFeet.value);
   }
 
   @Override
@@ -25,6 +26,11 @@ public class Feet implements Length {
 
   @Override
   public Centimeter toCentimeter() {
+    return null;
+  }
+
+  @Override
+  public Millimeter toMillimeter() {
     return null;
   }
 
