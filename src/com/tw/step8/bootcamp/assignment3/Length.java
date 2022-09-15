@@ -11,6 +11,6 @@ public abstract class Length {
     if (this.equals(other)) {
       return ComparisonResult.EQUAL;
     }
-    return (this.value - other.value) > 0 ? ComparisonResult.LONG: ComparisonResult.SHORT;
+    return (this.value - other.value) > 0 ? ComparisonResult.GREATER : ComparisonResult.LESSER;
   }
 }

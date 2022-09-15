@@ -11,7 +11,7 @@ class InchTest {
     Inch inch = new Inch(10);
     Inch anotherInch = new Inch(8);
 
-    assertEquals(ComparisonResult.LONG, inch.compare(anotherInch));
+    assertEquals(ComparisonResult.GREATER, inch.compare(anotherInch));
   }
 
   @Test
@@ -20,6 +20,15 @@ class InchTest {
     Centimeter centimeter = new Centimeter(5);
 
     assertEquals(ComparisonResult.EQUAL, inch.compare(centimeter));
+  }
+
+  @Test
+  void shouldAddAInchToAnotherInch() {
+    Inch inch1 = new Inch(2);
+    Inch inch2 = new Inch(2);
+    Inch result = new Inch(4);
+
+    assertEquals(result,inch1.add(inch2));
   }
 
 }

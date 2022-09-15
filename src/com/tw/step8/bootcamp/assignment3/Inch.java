@@ -12,6 +12,11 @@ public class Inch extends Length{
     Inch anotherInch = anotherLength.toInch();
     return super.compare(anotherInch);
   }
+  public Inch add(Inch otherInch) {
+    return new Inch(super.value+ otherInch.value);
+  }
+
+
 
   @Override
   public Inch toInch() {

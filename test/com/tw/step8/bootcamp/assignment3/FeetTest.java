@@ -11,7 +11,7 @@ class FeetTest {
     Feet feet = new Feet(1);
     Feet anotherFeet = new Feet(3);
 
-    assertEquals(ComparisonResult.SHORT, feet.compare(anotherFeet));
+    assertEquals(ComparisonResult.LESSER, feet.compare(anotherFeet));
   }
 
   @Test

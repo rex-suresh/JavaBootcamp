@@ -11,7 +11,7 @@ class CentimeterTest {
     Centimeter centimeter = new Centimeter(10);
     Centimeter anotherCentimeter = new Centimeter(8);
 
-    assertEquals(ComparisonResult.LONG, centimeter.compare(anotherCentimeter));
+    assertEquals(ComparisonResult.GREATER, centimeter.compare(anotherCentimeter));
   }
 
   @Test
