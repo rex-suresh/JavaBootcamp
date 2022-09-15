@@ -1,0 +1,22 @@
+package com.tw.step8.bootcamp.assignment3;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class VolumeTest {
+  @Test
+  void shouldCompareGallonWithLitre() {
+    Volume gallon = new Volume(1, VolumeUnit.GALLON);
+    Volume litre = new Volume(4, VolumeUnit.LITRE);
+
+    assertEquals(ComparisonResult.LESSER, gallon.compare(litre));
+  }
+  @Test
+  void shouldEquateGallonWithLitre() {
+    Volume gallon = new Volume(1, VolumeUnit.GALLON);
+    Volume litre = new Volume(3.78, VolumeUnit.LITRE);
+
+    assertEquals(ComparisonResult.EQUAL, gallon.compare(litre));
+  }
+}
