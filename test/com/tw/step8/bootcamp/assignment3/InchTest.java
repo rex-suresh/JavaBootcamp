@@ -31,4 +31,13 @@ class InchTest {
     assertEquals(result,inch1.add(inch2));
   }
 
+  @Test
+  void shouldAddACentimeterToInch() {
+    Inch inch = new Inch(2);
+    Centimeter centimeter = new Centimeter(2.5);
+    Inch result = new Inch(3);
+
+    assertEquals(result,inch.add(centimeter));
+  }
+
 }
