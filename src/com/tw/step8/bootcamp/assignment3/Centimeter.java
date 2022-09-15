@@ -9,6 +9,11 @@ public class Centimeter implements Length {
     this.value = value;
   }
 
+  public Centimeter compare(Length anotherLength) {
+    Centimeter anotherCentimeter = anotherLength.toCentimeter();
+    return new Centimeter(this.value - anotherCentimeter.value);
+  }
+
   @Override
   public Inch toInch() {
     double conversionConstant = 2/5d;
