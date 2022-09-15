@@ -19,4 +19,15 @@ class VolumeTest {
 
     assertEquals(ComparisonResult.EQUAL, gallon.compare(litre));
   }
+
+  @Test
+  void shouldAddLitreVolumeToGallon() {
+    Volume gallon = new Volume(1, VolumeUnit.GALLON);
+    Volume litre = new Volume(1, VolumeUnit.LITRE);
+
+    Volume resultVolume = new Volume(4.78, VolumeUnit.LITRE);
+
+    assertTrue(resultVolume.equivalent(gallon.add(litre)));
+
+  }
 }

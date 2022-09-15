@@ -12,7 +12,7 @@ public class Volume {
   }
 
   public ComparisonResult compare(Volume volume) {
-    double convertedVolume = getConvertedVolume(volume);
+    double convertedVolume = convertTo(volume.type);
 
     if (convertedVolume == volume.value) {
       return ComparisonResult.EQUAL;
@@ -20,8 +20,25 @@ public class Volume {
     return convertedVolume > volume.value ? ComparisonResult.GREATER : ComparisonResult.LESSER;
   }
 
-  private double getConvertedVolume(Volume volume) {
-    return value * type.to(volume.type);
+  private double convertTo(VolumeUnit toUnit) {
+    return this.value * type.to(toUnit);
+  }
+
+  public Volume add (Volume otherVolume) {
+    double unitsInLitre = otherVolume.convertTo(VolumeUnit.LITRE) + this.convertTo(VolumeUnit.LITRE);
+    return new Volume(unitsInLitre, VolumeUnit.LITRE);
+  }
+
+  private static boolean WithinRange(Volume vol1, Volume vol2,double delta) {
+    double difference = Math.abs(vol1.value - vol2.value);
+    return difference < delta;
+  }
+
+  public boolean equivalent(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Volume volume = (Volume) o;
+    return WithinRange(this,volume, 0.01)&& type == volume.type;
   }
 
   @Override
