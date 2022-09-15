@@ -2,16 +2,19 @@ package com.tw.step8.bootcamp.assignment3;
 
 import java.util.Objects;
 
-public class Feet implements Length {
-  private final double value;
-
+public class Feet extends Length {
   public Feet(double value) {
-    this.value = value;
+    super();
+    super.value = value;
   }
 
-  public Feet compare(Length anotherLength) {
+  public ComparisonResult compare(Length anotherLength) {
     Feet anotherFeet = anotherLength.toFeet();
-    return new Feet(this.value - anotherFeet.value);
+    return super.compare(anotherFeet);
+//    if (this.equals(anotherFeet)) {
+//      return ComparisonResult.EQUAL;
+//    }
+//    return (super.value - anotherFeet.value) > 0 ? ComparisonResult.LONG: ComparisonResult.SHORT;
   }
 
   @Override

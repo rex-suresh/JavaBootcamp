@@ -2,16 +2,15 @@ package com.tw.step8.bootcamp.assignment3;
 
 import java.util.Objects;
 
-public class Inch implements Length{
-  private final double value;
-
+public class Inch extends Length{
   public Inch(double value) {
-    this.value = value;
+    super();
+    super.value = value;
   }
 
-  public Inch compare(Length anotherLength) {
+  public ComparisonResult compare(Length anotherLength) {
     Inch anotherInch = anotherLength.toInch();
-    return new Inch(this.value - anotherInch.value);
+    return super.compare(anotherInch);
   }
 
   @Override

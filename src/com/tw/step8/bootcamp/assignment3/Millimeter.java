@@ -1,21 +1,18 @@
 package com.tw.step8.bootcamp.assignment3;
 
-import javax.swing.event.MouseInputListener;
 import java.util.Objects;
 
-public class Millimeter implements Length {
-  private double value;
-
+public class Millimeter extends Length {
   public Millimeter(double value) {
-    this.value = value;
+    super();
+    super.value = value;
   }
 
-  public Millimeter compare(Length anotherLength) {
+  public ComparisonResult compare(Length anotherLength) {
     Millimeter millimeter = anotherLength.toMillimeter();
-    return new Millimeter(this.value - millimeter.value);
+    return super.compare(millimeter);
   }
 
-  //  As a math student, I wish to compare lengths in mm and inch\ 100 mm = 4 in
   @Override
   public Inch toInch() {
     double conversionConstant = 1 / 25d;

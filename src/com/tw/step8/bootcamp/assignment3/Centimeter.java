@@ -2,16 +2,15 @@ package com.tw.step8.bootcamp.assignment3;
 
 import java.util.Objects;
 
-public class Centimeter implements Length {
-  private final double value;
-
+public class Centimeter extends Length {
   public Centimeter(double value) {
-    this.value = value;
+    super();
+    super.value = value;
   }
 
-  public Centimeter compare(Length anotherLength) {
+  public ComparisonResult compare(Length anotherLength) {
     Centimeter anotherCentimeter = anotherLength.toCentimeter();
-    return new Centimeter(this.value - anotherCentimeter.value);
+    return super.compare(anotherCentimeter);
   }
 
   @Override

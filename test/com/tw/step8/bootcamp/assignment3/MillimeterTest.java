@@ -10,8 +10,7 @@ class MillimeterTest {
   void shouldCompareMillimeterWithInch() {
     Millimeter millimeter = new Millimeter(100);
     Inch inch = new Inch(4);
-    Millimeter expectedLength = new Millimeter(0);
 
-    assertEquals(expectedLength,millimeter.compare(inch));
+    assertEquals(ComparisonResult.EQUAL,millimeter.compare(inch));
   }
 }
