@@ -32,7 +32,8 @@ public class Inch implements Length{
 
   @Override
   public Millimeter toMillimeter() {
-    return null;
+    double conversionConstant = 25d;
+    return new Millimeter(value * conversionConstant);
   }
 
   @Override
