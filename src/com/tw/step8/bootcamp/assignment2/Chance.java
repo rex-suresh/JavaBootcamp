@@ -1,26 +1,38 @@
 package com.tw.step8.bootcamp.assignment2;
 
+import com.tw.step8.bootcamp.assignment2.exception.InvalidProbabilityException;
+
 import java.util.Objects;
 
 public class Chance {
-  private final double probability;
+  private final static double IMPOSSIBILITY = 0;
+  private final static double CERTAINTY = 1;
 
-  public Chance(double probability) {
-    this.probability = probability;
+  private final double value;
+
+  private Chance(double value) {
+    this.value = value;
   }
 
-  public Chance complement() {
-    return new Chance(1 - probability);
+  public static Chance createChance(double value) {
+    if (value >= IMPOSSIBILITY && value <= CERTAINTY) {
+      return new Chance(value);
+    }
+    throw new InvalidProbabilityException(value);
   }
 
-  public Chance intersectionOf(Chance chance) {
-    double combinedProbability = chance.probability * probability;
-    return new Chance(combinedProbability);
+  public Chance complement() throws InvalidProbabilityException {
+    return createChance(1 - this.value);
   }
 
-  public Chance unionOf(Chance chance) {
-    double combinedProbability = probability + chance.probability - (chance.probability * probability);
-    return new Chance(combinedProbability);
+  public Chance intersection(Chance chance) throws InvalidProbabilityException {
+    double combinedProbability = chance.value * this.value;
+    return createChance(combinedProbability);
+  }
+
+  public Chance union(Chance chance) throws InvalidProbabilityException {
+    double unionProbability = this.value + chance.value - intersection(chance).value;
+    return createChance(unionProbability);
   }
 
   @Override
@@ -28,11 +40,11 @@ public class Chance {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Chance chance = (Chance) o;
-    return Double.compare(chance.probability, probability) == 0;
+    return Double.compare(chance.value, value) == 0;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(probability);
+    return Objects.hash(value);
   }
 }

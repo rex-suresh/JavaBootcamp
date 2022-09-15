@@ -1,33 +1,40 @@
 package com.tw.step8.bootcamp.assignment2;
 
+import com.tw.step8.bootcamp.assignment2.exception.InvalidProbabilityException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
   @Test
-  void shouldReturnChanceRepresentingNotAChance() {
-    Chance chance = new Chance(0.2);
-    Chance notAChance = new Chance(0.8);
+  void shouldThrowInvalidProbabilityException() {
+    assertThrows(InvalidProbabilityException.class, () -> Chance.createChance(-0.4));
+    assertThrows(InvalidProbabilityException.class, () -> Chance.createChance(1.2));
+  }
+
+  @Test
+  void shouldReturnChanceRepresentingComplement() {
+    Chance chance = Chance.createChance(0.2);
+    Chance notAChance = Chance.createChance(0.8);
 
     assertEquals(notAChance, chance.complement());
   }
 
   @Test
-  void shouldCombineChanceWithAGivenChance() {
-    Chance chance = new Chance(0.5);
-    Chance anotherChance = new Chance(0.5);
-    Chance expectedChance = new Chance(0.25);
+  void shouldReturnIntersectionChanceWithAGivenChance() {
+    Chance chance = Chance.createChance(0.5);
+    Chance anotherChance = Chance.createChance(1.0/6.0);
+    Chance expectedChance = Chance.createChance(1/12.0);
 
-    assertEquals(expectedChance, chance.intersectionOf(anotherChance));
+    assertEquals(expectedChance, chance.intersection(anotherChance));
   }
 
   @Test
-  void shouldAddChanceWithAGivenChance() {
-    Chance chance = new Chance(0.5);
-    Chance anotherChance = new Chance(0.5);
-    Chance expectedChance = new Chance(0.75);
+  void shouldReturnUnionChanceWithAGivenChance() {
+    Chance chance = Chance.createChance(1/3.0);
+    Chance anotherChance = Chance.createChance(1/7.0);
+    Chance expectedChance = Chance.createChance(9/21.0);
 
-    assertEquals(expectedChance, chance.unionOf(anotherChance));
+    assertEquals(expectedChance, chance.union(anotherChance));
   }
 }
