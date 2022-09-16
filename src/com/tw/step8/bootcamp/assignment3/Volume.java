@@ -1,5 +1,7 @@
 package com.tw.step8.bootcamp.assignment3;
 
+import com.tw.step8.bootcamp.assignment3.unit.VolumeUnit;
+
 import java.util.Objects;
 
 public class Volume {
@@ -21,15 +23,15 @@ public class Volume {
   }
 
   private double convertTo(VolumeUnit toUnit) {
-    return this.value * type.to(toUnit);
+    return this.value * type.toBase(toUnit);
   }
 
-  public Volume add (Volume otherVolume) {
+  public Volume add(Volume otherVolume) {
     double unitsInLitre = otherVolume.convertTo(VolumeUnit.LITRE) + this.convertTo(VolumeUnit.LITRE);
     return new Volume(unitsInLitre, VolumeUnit.LITRE);
   }
 
-  private static boolean WithinRange(Volume vol1, Volume vol2,double delta) {
+  private static boolean withinRange(Volume vol1, Volume vol2, double delta) {
     double difference = Math.abs(vol1.value - vol2.value);
     return difference < delta;
   }
@@ -39,7 +41,7 @@ public class Volume {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Volume volume = (Volume) o;
-    return WithinRange(this,volume, 0.01)&& type == volume.type;
+    return withinRange(this, volume, 0.01) && type == volume.type;
   }
 
   @Override

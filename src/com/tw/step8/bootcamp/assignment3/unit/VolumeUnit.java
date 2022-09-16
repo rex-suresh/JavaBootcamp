@@ -1,4 +1,4 @@
-package com.tw.step8.bootcamp.assignment3;
+package com.tw.step8.bootcamp.assignment3.unit;
 
 public enum VolumeUnit {
   GALLON(1,3.78d),
@@ -12,7 +12,7 @@ public enum VolumeUnit {
     this.toLitre = toLitre;
   }
 
-  double to (VolumeUnit volume) {
+  public double toBase(VolumeUnit volume) {
     return volume == LITRE ? toLitre : toGallon;
   }
 }
