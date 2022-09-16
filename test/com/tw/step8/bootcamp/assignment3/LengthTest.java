@@ -26,6 +26,7 @@ class LengthTest {
   void shouldAddAInchToAnotherInch() {
     Length inch1 = new Length(2, LengthUnit.INCH);
     Length inch2 = new Length(2, LengthUnit.INCH);
+
     Length result = new Length(4, LengthUnit.INCH);
 
     assertEquals(result,inch1.add(inch2));
@@ -35,6 +36,7 @@ class LengthTest {
   void shouldAddACentimeterToInch() {
     Length inch = new Length(2, LengthUnit.INCH);
     Length centimeter = new Length(2.5, LengthUnit.CENTIMETER);
+
     Length result = new Length(3, LengthUnit.INCH);
 
     assertEquals(result,inch.add(centimeter));

@@ -20,19 +20,8 @@ public class Temperature {
     return convertedTemp > temperature.value ? ComparisonResult.GREATER : ComparisonResult.LESSER;
   }
 
-  private double convertTo(TemperatureUnit type) {
-    if (this.type == TemperatureUnit.FAHRENHEIT) {
-      switch (type) {
-        case CELSIUS: return (value - 32) * (5/9d);
-        case FAHRENHEIT: return value;
-      }
-    }
-
-    switch (type) {
-      case CELSIUS: return value;
-      case FAHRENHEIT: return (value * 9/5d) + 32;
-    }
-    return 0;
+  private double convertTo(TemperatureUnit toUnit) {
+    return this.type.toBase(toUnit, this.value);
   }
 
   @Override

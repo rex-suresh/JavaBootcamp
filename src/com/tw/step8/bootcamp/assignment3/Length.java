@@ -11,7 +11,7 @@ public class Length {
     this.type = type;
   }
 
-  public ComparisonResult compare(Length length) {
+  public ComparisonResult compare(Length length) { // other
     double convertedLength = convertTo(length.type);
 
     if (convertedLength == length.value) {
