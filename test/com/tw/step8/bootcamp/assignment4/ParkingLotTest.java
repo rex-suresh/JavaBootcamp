@@ -14,8 +14,8 @@ class ParkingLotTest {
     Manager manager = new Manager();
     Attendant attendant = new Attendant();
     Notifier notifier = new Notifier(manager,new ArrayList<>(Arrays.asList(attendant)));
-
     ParkingLot parkingLot = new ParkingLot(1, 0,notifier);
+
     Car car = new Car();
 
     assertThrows(NoParkingSpaceException.class, () -> parkingLot.park(car));
@@ -26,11 +26,11 @@ class ParkingLotTest {
     Manager manager = new Manager();
     Attendant attendant = new Attendant();
     Notifier notifier = new Notifier(manager,new ArrayList<>(Arrays.asList(attendant)));
-
     ParkingLot parkingLot = new ParkingLot(1, 1,notifier);
     Car car = new Car();
 
     int parkingID = parkingLot.park(car);
+
     assertEquals(1, parkingID);
   }
 
@@ -43,6 +43,20 @@ class ParkingLotTest {
     Car car = new Car();
 
     parkingLot.park(car);
+
     assertTrue(parkingLot.isLotFull());
+  }
+
+  @Test
+  void percentFilled() {
+    Manager manager = new Manager();
+    Attendant attendant = new Attendant();
+    Notifier notifier = new Notifier(manager,new ArrayList<>(Arrays.asList(attendant)));
+    ParkingLot parkingLot = new ParkingLot(1, 4,notifier);
+    Car car = new Car();
+
+    parkingLot.park(car);
+
+    assertEquals(parkingLot.percentFilled(), 25d);
   }
 }

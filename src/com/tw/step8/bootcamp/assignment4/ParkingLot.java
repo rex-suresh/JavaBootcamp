@@ -14,7 +14,7 @@ public class ParkingLot {
   private int filledParkingSpaces;
   public final int lotID;
   private final int parkingLimit;
-  private Notifier notifier;
+  private final Notifier notifier;
 
   public ParkingLot(int lotID, int parkingLimit, Notifier notifier) {
     this.lotID = lotID;
