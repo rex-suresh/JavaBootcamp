@@ -2,6 +2,9 @@ package com.tw.step8.bootcamp.assignment4;
 
 // As a parking lot attendant, I want to park a car
 // As a parking lot attendant, I want to know when the lot is full
+// As a parking lot attendant, I want to handle more than one parking lot
+
+import com.tw.step8.bootcamp.assignment4.exception.NoParkingSpaceException;
 
 public class ParkingLot {
   private int parkingSpaceID;
@@ -13,8 +16,11 @@ public class ParkingLot {
   }
 
   public int park(Car car) {
-    parkingSpaceID++;
-    return parkingSpaceID;
+    if (!this.isLotFull()) {
+      parkingSpaceID++;
+      return parkingSpaceID;
+    }
+    throw new NoParkingSpaceException();
   }
 
   public boolean isLotFull() {
