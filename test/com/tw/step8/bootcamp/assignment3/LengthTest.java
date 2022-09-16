@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LengthTest {
 
   @Test
-  void shouldCompareAnInchWithAnotherInch() throws IncompatibleUnitException {
+  void shouldCompareInchToAnotherInch() throws IncompatibleUnitException {
     Length inch1 = new Length(10, INCH);
     Length inch2 = new Length(8, INCH);
 
@@ -17,7 +17,7 @@ class LengthTest {
   }
 
   @Test
-  void shouldCompareAnInchWithCentimeter() throws IncompatibleUnitException {
+  void shouldCompareInchToCentimeter() throws IncompatibleUnitException {
     Length inch = new Length(2, INCH);
     Length centimeter = new Length(5, CENTIMETER);
 
@@ -45,15 +45,15 @@ class LengthTest {
   }
 
   @Test
-  void shouldCompareFeetWithInches() throws IncompatibleUnitException {
-    Length feet = new Length(1, FEET);
+  void shouldCompareFootToInches() throws IncompatibleUnitException {
+    Length foot = new Length(1, FOOT);
     Length inch = new Length(12, INCH);
 
-    assertEquals(ComparisonResult.EQUAL, feet.compare(inch));
+    assertEquals(ComparisonResult.EQUAL, foot.compare(inch));
   }
 
   @Test
-  void shouldCompareCentimeterWithOtherCentimeter() throws IncompatibleUnitException {
+  void shouldCompareCentimeterToOtherCentimeter() throws IncompatibleUnitException {
     Length centimeter = new Length(10, CENTIMETER);
     Length anotherCentimeter = new Length(8, CENTIMETER);
 
@@ -61,7 +61,7 @@ class LengthTest {
   }
 
   @Test
-  void shouldCompareCentimeterWithMillimeter() throws IncompatibleUnitException {
+  void shouldCompareCentimeterToMillimeter() throws IncompatibleUnitException {
     Length centimeter = new Length(1, CENTIMETER);
     Length millimeter = new Length(10, MILLIMETER);
 
@@ -69,7 +69,7 @@ class LengthTest {
   }
 
   @Test
-  void shouldCompareMillimeterWithInch() throws IncompatibleUnitException {
+  void shouldCompareMillimeterToInch() throws IncompatibleUnitException {
     Length millimeter = new Length(100, MILLIMETER);
     Length inch = new Length(4, INCH);
 

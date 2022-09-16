@@ -4,7 +4,7 @@ import com.tw.step8.bootcamp.assignment3.exception.IncompatibleUnitException;
 
 public enum LengthUnit {
   INCH(1,5/2d),
-  FEET(12, 30),
+  FOOT(12, 30),
   CENTIMETER(2/5d, 1),
   MILLIMETER(1/25d, 10),
   TEST_UNIT(0,0);
@@ -20,7 +20,7 @@ public enum LengthUnit {
   public double toBase(LengthUnit toUnit) throws IncompatibleUnitException {
     switch (toUnit) {
       case INCH: return toInch;
-      case FEET: return toInch * 12;
+      case FOOT: return toInch * 12;
       case CENTIMETER: return toCm;
       case MILLIMETER: return toCm * 10;
     }
