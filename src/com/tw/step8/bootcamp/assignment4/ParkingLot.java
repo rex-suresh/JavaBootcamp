@@ -2,6 +2,8 @@ package com.tw.step8.bootcamp.assignment4;
 
 import com.tw.step8.bootcamp.assignment4.exception.NoParkingSpaceException;
 
+import java.util.HashSet;
+
 // As a parking lot attendant, I want to park a car
 // As a parking lot attendant, I want to know when the lot is full
 // As a parking lot attendant, I want to handle more than one parking lot
@@ -11,7 +13,7 @@ import com.tw.step8.bootcamp.assignment4.exception.NoParkingSpaceException;
 // As a parking lot attendant, I want to know when the lot is 20% or less occupied so that I can promote the lot
 
 public class ParkingLot {
-  private int filledParkingSpaces;
+  private HashSet<Car> parkingSpaces;
   public final int lotID;
   private final int parkingLimit;
   private final Notifier notifier;
@@ -20,23 +22,27 @@ public class ParkingLot {
     this.lotID = lotID;
     this.parkingLimit = parkingLimit;
     this.notifier = notifier;
-    this.filledParkingSpaces = 0;
+    this.parkingSpaces = new HashSet<>();
   }
 
   public int park(Car car) {
     if (!this.isLotFull()) {
-      filledParkingSpaces++;
+      parkingSpaces.add(car);
       notifier.notifyReceivers(this);
-      return filledParkingSpaces;
+      return parkingSpaces.size();
     }
     throw new NoParkingSpaceException();
   }
 
+  public int unPark(Car car) {
+    return 0;
+  }
+
   public boolean isLotFull() {
-    return filledParkingSpaces >= parkingLimit;
+    return parkingSpaces.size() >= parkingLimit;
   }
 
   public double percentFilled() {
-    return (filledParkingSpaces * 100d) / parkingLimit;
+    return ( parkingSpaces.size() * 100d ) / parkingLimit;
   }
 }

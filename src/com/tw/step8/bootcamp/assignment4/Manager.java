@@ -1,6 +1,5 @@
 package com.tw.step8.bootcamp.assignment4;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Manager {
