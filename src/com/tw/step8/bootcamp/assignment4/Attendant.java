@@ -3,7 +3,7 @@ package com.tw.step8.bootcamp.assignment4;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Attendant {
+public class Attendant implements Notifiable{
   private final ArrayList<ParkingLot> parkingLots;
   private HashSet<ParkingLot> promotableTable;
   private ParkingLot promotedLot;
@@ -22,6 +22,7 @@ public class Attendant {
     promotedLot.park(car);
   }
 
+  @Override
   public void getNotified(ParkingLot lot) {
     if (parkingLots.contains(lot)) {
       promotableTable.add(lot);

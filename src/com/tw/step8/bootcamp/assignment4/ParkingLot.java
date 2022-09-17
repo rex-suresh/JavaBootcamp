@@ -28,14 +28,20 @@ public class ParkingLot {
   public int park(Car car) {
     if (!this.isLotFull()) {
       parkingSpaces.add(car);
-      notifier.notifyReceivers(this);
+      this.notifyReceivers();
       return parkingSpaces.size();
     }
     throw new NoParkingSpaceException();
   }
 
-  public int unPark(Car car) {
-    return 0;
+  private void notifyReceivers() {
+    notifier.notifyReceivers(this);
+  }
+
+  public boolean unPark(Car car) {
+    boolean unParkStatus = parkingSpaces.removeIf((parkedCar) -> parkedCar.equals(car));
+    this.notifyReceivers();
+    return unParkStatus;
   }
 
   public boolean isLotFull() {
