@@ -27,17 +27,35 @@ public class Bag {
       throw new BagReachedMaxCapacityException();
     }
 
-    if (!this.isColorAllowed(ball.color)) {
-      throw new CannotContainBothBlueAndBlackBallsException(ball.color);
+    Criteria criteria = getCriteria(ball);
+    if (criteria.isSatisfied()) {
+      balls.add(ball);
     }
 
-    int sameColoredBallCount = this.sameColoredBallCount(ball.color);
-    if (sameColoredBallCount >= this.getMaxLimit(ball)) {
-      throw new MaximumLimitReachedForGivenColorException(ball.color);
-    }
-
-    balls.add(ball);
     return balls.size();
+  }
+
+  private Criteria getCriteria (Ball ball) {
+    Criteria BBColors = () -> {
+      if (!this.isColorAllowed(ball.color)) {
+        throw new CannotContainBothBlueAndBlackBallsException(ball.color);
+      }
+      return true;
+    };
+
+    Criteria RGYColors = () -> {
+      int sameColoredBallCount = this.sameColoredBallCount(ball.color);
+      if (sameColoredBallCount >= this.getMaxLimit(ball)) {
+        throw new MaximumLimitReachedForGivenColorException(ball.color);
+      }
+      return true;
+    };
+
+    HashSet<Color> colors = new HashSet<>();
+    colors.add(Color.BLACK);
+    colors.add(Color.BLUE);
+
+    return colors.contains(ball.color) ? BBColors : RGYColors;
   }
 
   private boolean isColorAllowed(Color color) {
