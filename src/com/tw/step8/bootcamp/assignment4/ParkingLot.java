@@ -11,9 +11,10 @@ import java.util.HashSet;
 // As a parking lot attendant, I want an assistant to monitor the same parking lots as me and update a display
 // As a parking lot manager, I want to know when (each) the lot is 80% full so that I don’t assign that lot to a trainee
 // As a parking lot attendant, I want to know when the lot is 20% or less occupied so that I can promote the lot
+// As a civic body, I want to know when the parking lots are 80% full so I can collect more taxes
 
 public class ParkingLot {
-  private HashSet<Car> parkingSpaces;
+  private final HashSet<Car> parkingSpaces;
   public final int lotID;
   private final int parkingLimit;
   private final Notifier notifier;
