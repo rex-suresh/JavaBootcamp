@@ -1,7 +1,7 @@
 package com.tw.step8.bootcamp.assignment5;
 
 public enum Color {
-  GREEN(3), COLOR_LESS(20);
+  GREEN(3), COLOR_LESS(13), RED(6);
 
   public final int maxLimit;
 

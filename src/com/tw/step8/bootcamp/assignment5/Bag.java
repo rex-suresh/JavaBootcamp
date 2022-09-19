@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 // As a wizard I’d like a bag that can hold a maximum of 12 magic balls
 // As a wizard I’d like a bag that can hold a maximum of 3 green balls
+// As a wizard I’d like a bag that prevents me from having more than double the number of red balls as there are green balls
 
 public class Bag {
   private static final int maxCapacity = 12;
@@ -20,7 +21,7 @@ public class Bag {
     Color ballColor = ball.color;
     int sameColoredBallCount = this.sameColoredBallCount(ballColor);
 
-    if (sameColoredBallCount >= ballColor.maxLimit) {
+    if (sameColoredBallCount >= this.getMaxLimit(ball)) {
       throw new MaximumLimitOfSameColorBallsReachedException(ballColor);
     }
 
@@ -30,6 +31,14 @@ public class Bag {
 
     balls.add(ball);
     return balls.size();
+  }
+
+  private int getMaxLimit(Ball ball) {
+    if (ball.color == Color.RED) {
+      int greenColoredBallCount = this.sameColoredBallCount(Color.GREEN);
+      return greenColoredBallCount * 2;
+    }
+    return ball.color.maxLimit;
   }
 
   public int sameColoredBallCount(Color color) {
