@@ -48,7 +48,7 @@ class BagTest {
   }
 
   @Test
-  void shouldAddRedBallsDoubleTheCountOfGreenBallsOnly() {
+  void shouldAllowToAddRedBallsDoubleTheCountOfGreenBalls() {
     Bag bag = new Bag();
     Ball greenBall = new Ball(Color.GREEN);
     Ball redBall1 = new Ball(Color.RED);
@@ -60,6 +60,19 @@ class BagTest {
     bag.add(redBall2);
 
     assertThrows(MaximumLimitOfSameColorBallsReachedException.class,() -> bag.add(redBall3));
+  }
+
+  @Test
+  void shouldAddRedBall() {
+    Bag bag = new Bag();
+    Ball greenBall = new Ball(Color.GREEN);
+    Ball redBall1 = new Ball(Color.RED);
+    Ball redBall2 = new Ball(Color.RED);
+
+    bag.add(greenBall);
+    bag.add(redBall1);
+
+    assertEquals(3,bag.add(redBall2));
   }
 
   @Test

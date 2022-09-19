@@ -8,6 +8,7 @@ import java.util.HashSet;
 // As a wizard I’d like a bag that can hold a maximum of 12 magic balls
 // As a wizard I’d like a bag that can hold a maximum of 3 green balls
 // As a wizard I’d like a bag that prevents me from having more than double the number of red balls as there are green balls
+// As a wizard I’d like a bag that only allows  40% of the balls contained to be yellow.
 
 public class Bag {
   private static final int maxCapacity = 12;
