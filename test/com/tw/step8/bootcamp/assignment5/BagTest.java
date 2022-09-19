@@ -61,4 +61,32 @@ class BagTest {
 
     assertThrows(MaximumLimitOfSameColorBallsReachedException.class,() -> bag.add(redBall3));
   }
+
+  @Test
+  void shouldAllowMaxOf40PercentOfYellowBallsOnly() {
+    Bag bag = new Bag();
+    Ball greenBall = new Ball(Color.GREEN);
+    Ball yellowBall = new Ball(Color.YELLOW);
+
+    bag.add(greenBall);
+
+    assertThrows(MaximumLimitOfSameColorBallsReachedException.class,() -> bag.add(yellowBall));
+  }
+
+  @Test
+  void shouldAddYellowBall() {
+    Bag bag = new Bag();
+    Ball greenBall1 = new Ball(Color.GREEN);
+    Ball greenBall2 = new Ball(Color.GREEN);
+    Ball greenBall3 = new Ball(Color.GREEN);
+    Ball redBall1 = new Ball(Color.RED);
+    Ball yellowBall = new Ball(Color.YELLOW);
+
+    bag.add(greenBall1);
+    bag.add(greenBall2);
+    bag.add(greenBall3);
+    bag.add(redBall1);
+
+    assertEquals(5, bag.add(yellowBall));
+  }
 }

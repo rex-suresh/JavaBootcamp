@@ -38,6 +38,10 @@ public class Bag {
       int greenColoredBallCount = this.sameColoredBallCount(Color.GREEN);
       return greenColoredBallCount * 2;
     }
+
+    if (ball.color == Color.YELLOW) {
+      return (int) Math.floor(balls.size() * 0.4);
+    }
     return ball.color.maxLimit;
   }
 
@@ -51,4 +55,5 @@ public class Bag {
 
     return sameColorBalls;
   }
+
 }
