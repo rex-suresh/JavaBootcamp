@@ -5,6 +5,9 @@ import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitOfSameColorBallsR
 
 import java.util.HashSet;
 
+// As a wizard I’d like a bag that can hold a maximum of 12 magic balls
+// As a wizard I’d like a bag that can hold a maximum of 3 green balls
+
 public class Bag {
   private static final int maxCapacity = 12;
   private final HashSet<Ball> balls;
@@ -14,10 +17,11 @@ public class Bag {
   }
 
   public int add(Ball ball) {
-    int sameColoredBallCount = this.sameColoredBallCount(ball.color);
+    Color ballColor = ball.color;
+    int sameColoredBallCount = this.sameColoredBallCount(ballColor);
 
-    if (sameColoredBallCount >= 3) {
-      throw new MaximumLimitOfSameColorBallsReachedException(ball.color);
+    if (sameColoredBallCount >= ballColor.maxLimit) {
+      throw new MaximumLimitOfSameColorBallsReachedException(ballColor);
     }
 
     if (balls.size() >= maxCapacity) {
@@ -31,7 +35,7 @@ public class Bag {
   public int sameColoredBallCount(Color color) {
     int sameColorBalls = 0;
     for (Ball ball : balls) {
-      if (ball.color == color && color == Color.GREEN) {
+      if (ball.color == color) {
         sameColorBalls++;
       }
     }
