@@ -23,25 +23,45 @@ public class Bag {
   }
 
   public int add(Ball ball) {
-    if (balls.size() >= maxCapacity) {
+    if (this.isBagFull()) {
       throw new BagReachedMaxCapacityException();
     }
 
-    Color ballColor = ball.color;
-    int sameColoredBallCount = this.sameColoredBallCount(ballColor);
+    if (!this.isColorAllowed(ball.color)) {
+      throw new CannotContainBothBlueAndBlackBallsException(ball.color);
+    }
 
+    int sameColoredBallCount = this.sameColoredBallCount(ball.color);
     if (sameColoredBallCount >= this.getMaxLimit(ball)) {
-      throw new MaximumLimitReachedForGivenColorException(ballColor);
+      throw new MaximumLimitReachedForGivenColorException(ball.color);
     }
 
     balls.add(ball);
     return balls.size();
   }
 
+  private boolean isColorAllowed(Color color) {
+    if (color != Color.BLUE && color != Color.BLACK) {
+      return true;
+    }
+
+    Color unAllowedColor = color == Color.BLUE ? Color.BLACK : Color.BLUE;
+    for (Ball ball : balls) {
+      if (ball.color == unAllowedColor) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private boolean isBagFull() {
+    return this.balls.size() >= maxCapacity;
+  }
+
   private int getMaxLimit(Ball ball) {
     if (ball.color == Color.RED) {
       int greenColoredBallCount = this.sameColoredBallCount(Color.GREEN);
-      return greenColoredBallCount * redBallMultiple; // remove magic numbers
+      return greenColoredBallCount * redBallMultiple;
     }
 
     if (ball.color == Color.YELLOW) {

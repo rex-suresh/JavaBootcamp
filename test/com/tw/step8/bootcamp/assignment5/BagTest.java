@@ -1,6 +1,7 @@
 package com.tw.step8.bootcamp.assignment5;
 
 import com.tw.step8.bootcamp.assignment5.exception.BagReachedMaxCapacityException;
+import com.tw.step8.bootcamp.assignment5.exception.CannotContainBothBlueAndBlackBallsException;
 import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitReachedForGivenColorException;
 import org.junit.jupiter.api.Test;
 
@@ -101,5 +102,27 @@ class BagTest {
     bag.add(redBall1);
 
     assertEquals(5, bag.add(yellowBall));
+  }
+
+  @Test
+  void shouldNotAllowBlackBallWhenBagHasBlueBall() {
+    Bag bag = new Bag();
+    Ball blueBall = new Ball(Color.BLUE);
+    Ball blackBall = new Ball(Color.BLACK);
+
+    bag.add(blueBall);
+
+    assertThrows(CannotContainBothBlueAndBlackBallsException.class, () -> bag.add(blackBall));
+  }
+
+  @Test
+  void shouldAddBlackBallWhenBlueBallIsNotPresent() {
+    Bag bag = new Bag();
+    Ball blackBall1 = new Ball(Color.BLACK);
+    Ball blackBall2 = new Ball(Color.BLACK);
+
+    bag.add(blackBall1);
+
+    assertEquals(2,bag.add(blackBall2));
   }
 }
