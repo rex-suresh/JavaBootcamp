@@ -1,7 +1,7 @@
 package com.tw.step8.bootcamp.assignment5;
 
 import com.tw.step8.bootcamp.assignment5.exception.BagReachedMaxCapacityException;
-import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitOfSameColorBallsReachedException;
+import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitReachedForGivenColorException;
 
 import java.util.HashSet;
 
@@ -23,7 +23,7 @@ public class Bag {
     int sameColoredBallCount = this.sameColoredBallCount(ballColor);
 
     if (sameColoredBallCount >= this.getMaxLimit(ball)) {
-      throw new MaximumLimitOfSameColorBallsReachedException(ballColor);
+      throw new MaximumLimitReachedForGivenColorException(ballColor);
     }
 
     if (balls.size() >= maxCapacity) {
@@ -37,7 +37,7 @@ public class Bag {
   private int getMaxLimit(Ball ball) {
     if (ball.color == Color.RED) {
       int greenColoredBallCount = this.sameColoredBallCount(Color.GREEN);
-      return greenColoredBallCount * 2;
+      return greenColoredBallCount * 2; // remove magic numbers
     }
 
     if (ball.color == Color.YELLOW) {

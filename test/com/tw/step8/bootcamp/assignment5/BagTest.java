@@ -1,7 +1,7 @@
 package com.tw.step8.bootcamp.assignment5;
 
 import com.tw.step8.bootcamp.assignment5.exception.BagReachedMaxCapacityException;
-import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitOfSameColorBallsReachedException;
+import com.tw.step8.bootcamp.assignment5.exception.MaximumLimitReachedForGivenColorException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,7 +44,7 @@ class BagTest {
     bag.add(ball2);
     bag.add(ball3);
 
-    assertThrows(MaximumLimitOfSameColorBallsReachedException.class, () -> bag.add(rejectedBall));
+    assertThrows(MaximumLimitReachedForGivenColorException.class, () -> bag.add(rejectedBall));
   }
 
   @Test
@@ -59,7 +59,7 @@ class BagTest {
     bag.add(redBall1);
     bag.add(redBall2);
 
-    assertThrows(MaximumLimitOfSameColorBallsReachedException.class,() -> bag.add(redBall3));
+    assertThrows(MaximumLimitReachedForGivenColorException.class,() -> bag.add(redBall3));
   }
 
   @Test
@@ -83,7 +83,7 @@ class BagTest {
 
     bag.add(greenBall);
 
-    assertThrows(MaximumLimitOfSameColorBallsReachedException.class,() -> bag.add(yellowBall));
+    assertThrows(MaximumLimitReachedForGivenColorException.class,() -> bag.add(yellowBall));
   }
 
   @Test
